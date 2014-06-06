@@ -121,9 +121,9 @@ Test = comb.define(null, {
                 this._expects.push(args);
             }
 
-            if (cb) {
-                return this.end(cb);
-            }
+            //if (cb) {
+            //    return this.end(cb);
+            //}
             return this;
         },
 
@@ -196,7 +196,8 @@ Test = comb.define(null, {
                             throw new Error(['Expected', util.inspect(val), 'response body, got', util.inspect(json)].join(" ") + "\n" + expect[2]);
                         }
                     } else if (comb.isFunction(val)) {
-                        return val(body);
+                        //return val(body);
+                        return val(res);
                     } else if (comb.isRegExp(val)) {
                         if (!val.test(body)) {
                             throw new Error(['Expected body', util.inspect(body), 'to match', util.inspect(val)].join(" ") + "\n" + expect[2]);
